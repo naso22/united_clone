@@ -25,5 +25,19 @@ body {
     margin: 0;
 }
 
+li{
+    list-style: none;
+    padding: 0;
+}
+
+ul{
+    padding: 0;
+}
+
+a{
+    color: #444343;
+    text-decoration: inherit;
+}
+
 </style>
 
