@@ -3,7 +3,7 @@ import {createRouter,createWebHistory} from 'vue-router';
 import WoMenPage from "@/pages/product/WoMenPage.vue";
 import MenPage from "@/pages/product/MenPage.vue";
 import AllPage from "@/pages/product/AllPage.vue";
-
+import RankingPage from "@/pages/ranking/RankingPage.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes:[
@@ -11,6 +11,8 @@ const router = createRouter({
         {path:'/women',component:WoMenPage},
         {path:'/men',component:MenPage},
         {path:'/all',component:AllPage},
+        {path:'/ranking' ,component:RankingPage}
+
     ]
 });
 

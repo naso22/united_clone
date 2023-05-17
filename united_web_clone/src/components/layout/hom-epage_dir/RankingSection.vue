@@ -3,13 +3,13 @@
       <div class="ranking-title">
               <h2>ランキング</h2>
               <div class="ranking-title__s">RANKING</div>
-          <p class="ranking-title__s"><a href="">もっと見る</a></p>
+          <p class="ranking-title__s"><router-link to="/ranking">もっと見る</router-link></p>
       </div>
           <ul>
-          <product-card></product-card>
-              <product-card></product-card>
-              <product-card></product-card>
-              <product-card></product-card>
+          <div class="product-card"><product-card></product-card></div>
+              <div class="product-card"><product-card></product-card></div>
+              <div class="product-card"><product-card></product-card></div>
+              <div class="product-card"><product-card></product-card></div>
           </ul>
   </div>
 </template>
@@ -38,6 +38,7 @@ export default {
 
 .ranking-title__s{
     font-size: 0.75rem;
+    margin: 5px;
 }
 
 h2{
@@ -50,6 +51,10 @@ ul{
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.product-card{
+    width: 250px;
 }
 
 

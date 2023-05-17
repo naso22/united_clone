@@ -11,11 +11,12 @@
  <style>
  button{
   background-color: #fff;
-  padding:3px;
+  padding:7px 40px;
   border:1.5px solid rgba(192, 192, 192, 0.88);
   font-size:0.9rem;
-  width: 45vh;
+  width:400px;
   color: #858181;
   cursor : pointer;
+  margin: 15px;
  }
  </style>
