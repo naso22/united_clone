@@ -1,15 +1,15 @@
 <template>
   <ul>
       <li>
-          <a href="">WOMEN</a>
+          <router-link to="/">WOMEN</router-link>
       </li>
 
       <li>
-          <a href="">MEN</a>
+          <router-link to="/men">MEN</router-link>
       </li>
 
       <li>
-      <a href="">ALL</a>
+          <router-link to="/all">ALL</router-link>
       </li>
       <li>
           <a href="">商品カテゴリー</a>

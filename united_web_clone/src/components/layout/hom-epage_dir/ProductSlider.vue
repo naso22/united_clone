@@ -19,5 +19,6 @@ div{
     max-width:1000px;
     height: 50vh;
     border:1.5px solid rgba(192, 192, 192, 0.88);
+    margin-bottom: 70px;
 }
 </style>

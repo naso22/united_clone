@@ -1,6 +1,6 @@
 <template>
     <div>
-        <sarch-button></sarch-button>
+        <sarch-button>すべての商品から探す</sarch-button>
     </div>
 </template>
 

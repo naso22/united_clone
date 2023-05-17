@@ -1,5 +1,7 @@
 <template>
- <button>すべての商品から探す</button>
+ <button>
+  <slot></slot>
+ </button>
 </template>
 
 <script>
