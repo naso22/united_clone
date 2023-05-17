@@ -1,6 +1,6 @@
 <template>
     <div>
-        <sarch-button>すべての商品から探す</sarch-button>
+        <sarch-button class="search-button">すべての商品から探す</sarch-button>
     </div>
 </template>
 
@@ -14,9 +14,15 @@ export default {
 </script>
 
 <style scoped>
-div{
+div {
     display: flex;
     justify-content: center;
-    margin: 15px;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.search-button {
+    width: 500px;
+    text-align: center;
 }
 </style>
