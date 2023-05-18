@@ -54,45 +54,45 @@ export default {
                 },
                 {
                     id:'p5',
-                    img:'https://uaoi.united-arrows.co.jp/img/item/13000/1300023Y0020/1300023Y0020_l1_a000.jpg',
-                    name:'U9060UAW',
+                    img:'https://uaoi.united-arrows.co.jp/img/item/13000/1300023S1067/1300023S1067_l1_a000.jpg',
+                    name:' U990GY2',
                     maker:'New Balance',
                     kinds:'スニーカ',
-                    overview:'【別注】＜New Balance＞ U9060UAW SP/スニーカー',
-                    price:'¥24,200(税込)',
-                    points:'ハウスカードポイント：220pt還元',
-                    size:'サイズ：25.5cm 26cm 26.5cm 27cm 27.5cm 28cm 28.5cm 29cm'
+                    overview:'【WEB限定】＜New Balance＞ U990GY2/スニーカー',
+                    price:'¥31,900(税込)',
+                    points:'ハウスカードポイント：290pt還元',
+                    size:'25cm 25.5cm 26cm 26.5cm 27cm 27.5cm 28cm 28.5cm 29cm'
                 },
                 {
                     id:'p6',
-                    img:'https://uaoi.united-arrows.co.jp/img/item/13000/1300023Y0020/1300023Y0020_l1_a000.jpg',
-                    name:'U9060UAW',
+                    img:'https://uaoi.united-arrows.co.jp/img/item/14000/1400023S0653/1400023S0653_l1_a000.jpg',
+                    name:'U990T 2',
                     maker:'New Balance',
                     kinds:'スニーカ',
-                    overview:'【別注】＜New Balance＞ U9060UAW SP/スニーカー',
-                    price:'¥24,200(税込)',
-                    points:'ハウスカードポイント：220pt還元',
-                    size:'サイズ：25.5cm 26cm 26.5cm 27cm 27.5cm 28cm 28.5cm 29cm'
+                    overview:'【WEB限定】＜New Balance＞ U990T 2/スニーカー',
+                    price:'¥36,300(税込)',
+                    points:'ハウスカードポイント：330pt還元',
+                    size:'25cm 25.5cm 26cm 26.5cm 27cm 27.5cm 28cm 28.5cm 29cm\n'
                 },
                 {
                     id:'p7',
                     img:'https://uaoi.united-arrows.co.jp/img/item/13000/1300023Y0020/1300023Y0020_l1_a000.jpg',
-                    name:'U9060UAW',
+                    name:'U990TC6',
                     maker:'New Balance',
                     kinds:'スニーカ',
-                    overview:'【別注】＜New Balance＞ U9060UAW SP/スニーカー',
-                    price:'¥24,200(税込)',
+                    overview:'＜New Balance＞ U990TC6/スニーカー',
+                    price:'¥36,300(税込)',
                     points:'ハウスカードポイント：220pt還元',
                     size:'サイズ：25.5cm 26cm 26.5cm 27cm 27.5cm 28cm 28.5cm 29cm'
                 },
                 {
                     id:'p8',
-                    img:'https://uaoi.united-arrows.co.jp/img/item/13000/1300023Y0020/1300023Y0020_l1_a000.jpg',
-                    name:'U9060UAW',
+                    img:'https://uaoi.united-arrows.co.jp/img/item/13000/1300023Y0023/1300023Y0023_l1_a000.jpg',
+                    name:'ビッグバックル サンダル',
                     maker:'New Balance',
                     kinds:'スニーカ',
                     overview:'【別注】＜New Balance＞ U9060UAW SP/スニーカー',
-                    price:'¥24,200(税込)',
+                    price:'¥28,600(税込)',
                     points:'ハウスカードポイント：220pt還元',
                     size:'サイズ：25.5cm 26cm 26.5cm 27cm 27.5cm 28cm 28.5cm 29cm'
                 }
