@@ -17,7 +17,6 @@
                   <div class="product"><product-card></product-card></div>
                   <div class="product"><product-card></product-card></div>
                   <div class="product"><product-card></product-card></div>
-
               </ul>
   </div>
   </div>

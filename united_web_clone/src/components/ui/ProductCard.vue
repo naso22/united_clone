@@ -1,13 +1,20 @@
 <template>
 <li>
     <div>
-        <img src="https://uaoi.united-arrows.co.jp/img/item/14000/1400023S0911/1400023S0911_m1_a000.jpg" alt="">
+        <img :src="img" alt="">
     </div>
-    <p>Nike</p>
-    <p>スニーカー</p>
-    <p>¥13,200</p>
+    <p>{{maker}}</p>
+    <p>{{kinds}}</p>
+    <p>{{price}}</p>
 </li>
 </template>
+
+<script>
+export default {
+    props:['img','maker','kinds','price'],
+}
+
+</script>
 
 <style scoped>
 img{

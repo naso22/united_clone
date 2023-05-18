@@ -6,19 +6,38 @@
           <p class="ranking-title__s"><router-link to="/ranking">もっと見る</router-link></p>
       </div>
           <ul>
-          <div class="product-card"><product-card></product-card></div>
-              <div class="product-card"><product-card></product-card></div>
-              <div class="product-card"><product-card></product-card></div>
-              <div class="product-card"><product-card></product-card></div>
+                  <product-card class="ranking__card"
+                                v-for="product in topFourProducts"
+                                :key='product.id'
+                                :id='product.id'
+                                :img="product.img"
+                                :maker='product.maker'
+                                :kinds='product.kinds'
+                                :price=product.price>
+                  </product-card>
           </ul>
   </div>
 </template>
 
 <script>
 import ProductCard from "@/components/ui/ProductCard.vue";
+import {computed} from "vue";
+import { useStore } from 'vuex';
+
 export default {
     components:{
         ProductCard
+    },
+    setup(){
+        const store = useStore();
+        const topFourProducts= computed(() =>{
+            return  store.getters['products/products'];
+        })
+
+        console.log(store)
+
+        return{topFourProducts}
+
     }
 }
 </script>
@@ -48,12 +67,11 @@ h2{
 ul{
     display: flex;
     justify-content: space-between;
-    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.product-card{
+.ranking__card{
     width: 250px;
 }
 

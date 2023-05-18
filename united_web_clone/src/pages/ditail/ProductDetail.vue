@@ -41,14 +41,16 @@
 import TheSarch from "@/components/layout/hom-epage_dir/TheSarch.vue";
 import CategoryFilter from "@/components/layout/hom-epage_dir/CategoryFilter.vue";
 import OderButtom from "@/components/ui/OderButtom.vue";
-import SarchButton from '@/components/ui/SarchButton.vue'
+import SarchButton from '@/components/ui/SarchButton.vue';
+
+
 export default {
     components:{
         OderButtom,
         TheSarch,
         CategoryFilter,
         SarchButton
-    }
+    },
 }
 </script>
 
