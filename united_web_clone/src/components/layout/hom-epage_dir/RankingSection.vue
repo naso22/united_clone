@@ -6,7 +6,7 @@
           <p class="ranking-title__s"><router-link to="/ranking">もっと見る</router-link></p>
       </div>
           <ul>
-                  <product-card class="ranking__card"
+               <product-card class="ranking__card"
                                 v-for="product in topFourProducts"
                                 :key='product.id'
                                 :id='product.id'
@@ -14,7 +14,7 @@
                                 :maker='product.maker'
                                 :kinds='product.kinds'
                                 :price=product.price>
-                  </product-card>
+                </product-card>
           </ul>
   </div>
 </template>
@@ -30,11 +30,10 @@ export default {
     },
     setup(){
         const store = useStore();
+
         const topFourProducts= computed(() =>{
             return  store.getters['products/products'];
-        })
-
-        console.log(store)
+        });
 
         return{topFourProducts}
 

@@ -1,17 +1,28 @@
 <template>
 <li>
+    <router-link :to="productDetailLink">
     <div>
         <img :src="img" alt="">
     </div>
     <p>{{maker}}</p>
     <p>{{kinds}}</p>
     <p>{{price}}</p>
+    </router-link>
 </li>
 </template>
 
 <script>
+import {computed} from "vue";
+
 export default {
-    props:['img','maker','kinds','price'],
+    props:['id','img','maker','kinds','price'],
+
+    setup(props){
+        const productDetailLink = computed(() => {
+            return '/product'+'/'+props.id
+        })
+        return{productDetailLink}
+    }
 }
 
 </script>

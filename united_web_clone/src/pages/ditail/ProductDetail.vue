@@ -42,7 +42,8 @@ import TheSarch from "@/components/layout/hom-epage_dir/TheSarch.vue";
 import CategoryFilter from "@/components/layout/hom-epage_dir/CategoryFilter.vue";
 import OderButtom from "@/components/ui/OderButtom.vue";
 import SarchButton from '@/components/ui/SarchButton.vue';
-
+import {ref,onMounted} from "vue";
+import { useStore } from 'vuex';
 
 export default {
     components:{
@@ -51,6 +52,15 @@ export default {
         CategoryFilter,
         SarchButton
     },
+    props:['id'],
+    setup(props){
+        const selectedProduct = ref(null)
+        const store =useStore();
+        onMounted(()=>{
+            selectedProduct.value = store.getters['products/products'].find(
+                (product) => product.id === props.id)
+        })
+    }
 }
 </script>
 

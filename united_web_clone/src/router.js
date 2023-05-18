@@ -13,10 +13,7 @@ const router = createRouter({
         {path:'/men',component:MenPage},
         {path:'/all',component:AllPage},
         {path:'/ranking' ,component:RankingPage},
-        {path:'/detail', component:ProductDetail,},
-
-
-
+        {path:'/product/:id', component:ProductDetail, props:true},
     ]
 });
 
