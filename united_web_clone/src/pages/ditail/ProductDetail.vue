@@ -134,7 +134,9 @@ width: 400px;
 }
 
 .action{
-width: 100%;
+    margin-top: 20px;
+
+
 }
 
 

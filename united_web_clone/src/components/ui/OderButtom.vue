@@ -1,16 +1,16 @@
 <template>
   <button>
-      SOLD OUT
+      選択して注文
   </button>
 </template>
 
 <style scoped>
 button{
-    background-color: #fff;
+    background-color: #818181;
     padding:7px 40px;
-    font-size:1.3rem;
+    font-size:0.8rem;
     width:400px;
-    color: #858181;
+    color: #ffffff;
     cursor : pointer;
     margin-bottom: 10px;
     height: 50px;

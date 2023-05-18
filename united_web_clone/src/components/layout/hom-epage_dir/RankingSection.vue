@@ -32,7 +32,8 @@ export default {
         const store = useStore();
 
         const topFourProducts= computed(() =>{
-            return  store.getters['products/products'];
+            const allProducts = store.getters['products/products'];
+            return allProducts.slice(0, 4);
         });
 
         return{topFourProducts}
