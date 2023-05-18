@@ -3,7 +3,7 @@
     <category-filter></category-filter>
   <div class="product">
       <div>
-          <div class="block">
+          <div class="product__img">
               <img :src=productImg>
           </div>
           <div>
@@ -22,7 +22,7 @@
           <p class="text_s">{{size}}</p>
           <div class="action">
           <OderButtom></OderButtom>
-              <div class="fovorite_btn">
+              <div class="fovorite__btn">
                   <div style="display: flex; justify-content: flex-end;">
                       <sarch-button>お気に入り追加</sarch-button>
                   </div>
@@ -104,7 +104,7 @@ export default {
 </script>
 
 <style>
-.block{
+.product__img{
     width:500px ;
     height: 600px;
     margin: 20px;
@@ -122,7 +122,7 @@ export default {
 width: 400px;
 }
 
-.fovorite_btn{
+.fovorite__btn{
     display: flex;
     justify-content: flex-end;
     margin-bottom: 60px;

@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div class="block"></div>
+        <div class="block">
+            <img src="https://store.united-arrows.co.jp/__banner_top/uploads/d1ed07ec1a3e6c6f1dbf73812aab2ed8.jpg">
+        </div>
     </div>
 </template>
 
@@ -18,7 +20,6 @@ div{
 .block{
     max-width:1000px;
     height: 50vh;
-    border:1.5px solid rgba(192, 192, 192, 0.88);
     margin-bottom: 70px;
 }
 </style>
