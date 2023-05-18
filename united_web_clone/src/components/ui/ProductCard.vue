@@ -20,7 +20,7 @@ export default {
     setup(props){
         const productDetailLink = computed(() => {
             return '/product'+'/'+props.id
-        })
+        });
         return{productDetailLink}
     }
 }
