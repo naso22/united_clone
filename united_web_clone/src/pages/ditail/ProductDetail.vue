@@ -3,7 +3,9 @@
     <category-filter></category-filter>
   <div class="product">
       <div>
-          <div class="block"></div>
+          <div class="block">
+              <img :src=productImg>
+          </div>
           <div>
               <div></div>
               <div></div>
@@ -62,6 +64,10 @@ export default {
                 (product) => product.id === props.id)
         });
 
+        const productImg = computed(()=>{
+            return selectedProduct.value.img
+        })
+
         const productName = computed(()=>{
             return selectedProduct.value.name
         })
@@ -83,11 +89,13 @@ export default {
         })
 
 
-        return {productName,
-                overView,
-                price,
-              houseCardPoint,
-              size
+        return {
+            productImg,
+            productName,
+            overView,
+            price,
+            houseCardPoint,
+            size
         }
     }
 }
@@ -95,7 +103,6 @@ export default {
 
 <style>
 .block{
-    border: #8f8e8d solid 1px;
     width:500px ;
     height: 600px;
     margin: 20px;
@@ -131,5 +138,10 @@ width: 100%;
 p{
     margin-bottom: 20px;
     font-size: 0.75rem;
+}
+
+h2{
+    margin-top: 30px;
+    font-size:2rem;
 }
 </style>
