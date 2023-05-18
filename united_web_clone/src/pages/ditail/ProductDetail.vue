@@ -12,12 +12,14 @@
               <div></div>
           </div>
       </div>
-      <div class="product_rigth">
+      <div class="product-detail">
           <h2>{{productName}}</h2>
-          <p>{{overView}}</p>
-          <p>{{price}}</p>
-          <p>{{houseCardPoint}}</p>
-          <p>{{size}}</p>
+          <p class="text_s">{{overView}}</p>
+          <div class="product-detail__price">
+              <p class="text_m">{{price}}</p>
+              <p class="text_s">{{houseCardPoint}}</p>
+          </div>
+          <p class="text_s">{{size}}</p>
           <div class="action">
           <OderButtom></OderButtom>
               <div class="fovorite_btn">
@@ -116,7 +118,7 @@ export default {
     justify-content: space-between;
 }
 
-.product_rigth{
+.product-detail{
 width: 400px;
 }
 
@@ -135,9 +137,19 @@ width: 400px;
 width: 100%;
 }
 
-p{
-    margin-bottom: 20px;
-    font-size: 0.75rem;
+
+.product-detail__price{
+  margin-top:25px ;
+    margin-bottom:25px ;
+}
+
+.text_s{
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+.text_m{
+    font-size: 1.2rem;
 }
 
 h2{
