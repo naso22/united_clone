@@ -1,39 +1,41 @@
 <template>
-    <div class="backdrop" @click="closeButton"> </div>
-  <div class="modal">
-      <div class="modal__section">
-          <h2 class="modal__section-titile">ショッピングバッグに追加</h2>
-      </div>
-      <div class="order">
-          <div class="order__product">
-              <div class="product-section">
-                  <img class="product-section__img" :src=productImg alt="">
-                  <p class="product-coler"></p>
-              </div>
-              <div class="oder__list">
-                  <div class="product__situation">
-                      <p class="product__size">S</p>
-                      <p class="product__stock">在庫なし</p>
-                  </div>
-                  <div class="order__btn">
-                      <oder-buttom v-if="fovorite === '商品を注文する'">{{fovorite}}</oder-buttom>
-                      <SarchButton v-else>{{fovorite}}</SarchButton>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <div class="backdrop" @click="closeButton"></div>
+    <div class="modal">
+        <h2 class="modal__titile">ショッピングバッグに追加</h2>
+        <div class="modal__inner">
+            <div class="order-block">
+                <div class="order-block__box">
+                    <img class="order-block__img" :src=productImg alt="">
+                    <p class="product-coler"></p>
+                </div>
+                <div class="order-block__resousu">
+                    <div class="product">
+                        <p class="product__size">S</p>
+                        <p class="product__stock">在庫なし</p>
+                    </div>
+                    <div class="order-btn">
+                        <oder-buttom v-if="fovorite === '商品を注文する'">{{ fovorite }}</oder-buttom>
+                        <SarchButton v-else class="order-btn__fovorite" @click="toggleFavorite">
+                            <p  :class="{ redHeart: isFovorite }">❤</p>
+                            <p>{{ fovorite }}</p>
+                        </SarchButton>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      <div class="modal__btn">
-          <oder-buttom>注文手続きへ進む</oder-buttom>
-          <oder-buttom @click="closeButton">閉じる</oder-buttom>
-      </div>
-  </div>
+        <div class="modal__btn">
+            <oder-buttom>注文手続きへ進む</oder-buttom>
+            <oder-buttom @click="closeButton">閉じる</oder-buttom>
+        </div>
+    </div>
 </template>
 
 <script>
 import OderButtom from "@/components/ui/OderButtom.vue";
-import SarchButton from'@/components/ui/SarchButton.vue'
+import SarchButton from '@/components/ui/SarchButton.vue'
 import products from "@/store/modeuls/products"
+import { ref} from "vue";
 
 export default {
     computed: {
@@ -45,13 +47,22 @@ export default {
         OderButtom,
         SarchButton,
     },
-    props:['productImg','fovorite'],
-    setup(props,context) {
+    props: ['productImg', 'fovorite'],
+    setup(props, context) {
         function closeButton() {
             context.emit('close')
         }
-        return{
-            closeButton
+
+        let isFovorite = ref(false)
+        function toggleFavorite() {
+            isFovorite.value =!isFovorite.value
+            console.log(isFovorite.value)
+        }
+
+        return {
+            closeButton,
+            toggleFavorite,
+            isFovorite
         }
     }
 }
@@ -67,7 +78,8 @@ export default {
     background-color: rgba(0, 0, 0, 0.36);
     z-index: 10;
 }
-.modal{
+
+.modal {
     position: fixed;
     top: 5vh;
     left: 35%;
@@ -84,59 +96,67 @@ export default {
     justify-content: space-between;
 }
 
-.order{
+.modal__titile {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 30px;
+    font-weight: normal;
+    padding-bottom: 30px;
+    border-bottom: #858181 solid 1px;
+}
+
+.modal__inner {
     margin: 40px;
     height: 65%;
 }
 
-.product-section__img{
-    width: 100px;
-}
-
-
-.order__product{
+.order-block {
     display: flex;
     justify-content: space-around;
     margin: 20px;
 }
 
-.product-section{
-width: 200px;
+.order-block__box {
+    width: 200px;
 }
 
-.oder__list{
+.order-block__img {
+    width: 70%;
+}
+
+.order-block__resousu {
     display: flex;
     justify-content: space-between;
     width: 70%;
 }
 
-.modal__section{
-    padding: 10px;
-    border-bottom: #858181 solid 1px;
+.modal__btn {
+    margin: 20px;
 }
 
-.modal__section-titile{
-    text-align: center;
-    font-size: 1rem;
-    font-weight: normal;
-}
-
-.modal__btn{
-margin: 20px;
-}
-
-.order__btn{
-    width: 250px;
-}
-
-.product__situation{
+.product {
     width: 100px;
 }
 
 .product-coler,
 .product__size,
-.product__stock{
+.product__stock {
     font-size: 0.8rem;
+}
+
+.order-btn__fovorite {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 190px;
+}
+
+.order-btn__mark {
+    width: 90%;
+}
+
+.redHeart{
+    color: crimson;
 }
 
 </style>

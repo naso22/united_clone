@@ -8,7 +8,7 @@
 
 </script>
 
- <style>
+ <style scoped>
  button{
   background-color: #fff;
   padding:7px 40px;

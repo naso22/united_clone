@@ -13,5 +13,6 @@ button{
     color: #ffffff;
     cursor : pointer;
     margin-bottom: 10px;
+    border:1.5px solid rgba(192, 192, 192, 0.88);
 }
 </style>
