@@ -1,5 +1,5 @@
 <template>
-    <div  class="backdrop" @click="closeButton">
+    <div class="backdrop" @click="closeButton"> </div>
   <div class="modal">
       <div class="modal__section">
           <h2 class="modal__section-titile">ショッピングバッグに追加</h2>
@@ -7,8 +7,8 @@
       <div class="order">
           <div class="order__product">
               <div class="product-section">
-                  <img src="" alt="">
-                  <p class="product-coler">WHITE</p>
+                  <img class="product-section__img" :src=productImg alt="">
+                  <p class="product-coler"></p>
               </div>
               <div class="oder__list">
                   <div class="product__situation">
@@ -16,7 +16,8 @@
                       <p class="product__stock">在庫なし</p>
                   </div>
                   <div class="order__btn">
-                      <oder-buttom>注文する</oder-buttom>
+                      <oder-buttom v-if="fovorite === '商品を注文する'">{{fovorite}}</oder-buttom>
+                      <SarchButton v-else>{{fovorite}}</SarchButton>
                   </div>
               </div>
           </div>
@@ -24,19 +25,27 @@
 
       <div class="modal__btn">
           <oder-buttom>注文手続きへ進む</oder-buttom>
-          <oder-buttom @click="closeButton()">閉じる</oder-buttom>
+          <oder-buttom @click="closeButton">閉じる</oder-buttom>
       </div>
   </div>
-    </div>>
 </template>
 
 <script>
 import OderButtom from "@/components/ui/OderButtom.vue";
+import SarchButton from'@/components/ui/SarchButton.vue'
+import products from "@/store/modeuls/products"
 
 export default {
-    components: {
-        OderButtom
+    computed: {
+        products() {
+            return products
+        }
     },
+    components: {
+        OderButtom,
+        SarchButton,
+    },
+    props:['productImg','fovorite'],
     setup(props,context) {
         function closeButton() {
             context.emit('close')
@@ -80,6 +89,10 @@ export default {
     height: 65%;
 }
 
+.product-section__img{
+    width: 100px;
+}
+
 
 .order__product{
     display: flex;
@@ -94,9 +107,7 @@ width: 200px;
 .oder__list{
     display: flex;
     justify-content: space-between;
-    width: 60vh;
-    align-items: center;
-
+    width: 70%;
 }
 
 .modal__section{

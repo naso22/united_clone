@@ -13,6 +13,5 @@ button{
     color: #ffffff;
     cursor : pointer;
     margin-bottom: 10px;
-    height: 50px;
 }
 </style>
