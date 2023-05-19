@@ -38,7 +38,8 @@
           </div>
       </div>
   </div>
-    <base-dialog v-if="modalOpen"></base-dialog>
+    <base-dialog v-if="modalOpen"
+    @close="cloesButtom"></base-dialog>
 </template>
 
 <script>
@@ -95,10 +96,11 @@ export default {
 
         let modalOpen =ref(false);
         function oderButtom(){
-           modalOpen.value =!modalOpen.value
+           modalOpen.value =true
         }
-
-
+        function cloesButtom(){
+            modalOpen.value =false
+        }
         return {
             productImg,
             productName,
@@ -107,7 +109,8 @@ export default {
             houseCardPoint,
             size,
             oderButtom,
-            modalOpen
+            modalOpen,
+            cloesButtom
         }
     }
 }

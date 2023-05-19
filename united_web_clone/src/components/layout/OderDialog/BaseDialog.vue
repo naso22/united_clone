@@ -1,5 +1,5 @@
 <template>
-    <div  class="backdrop">
+    <div  class="backdrop" @click="closeButton">
   <div class="modal">
       <div class="modal__section">
           <h2 class="modal__section-titile">ショッピングバッグに追加</h2>
@@ -16,7 +16,7 @@
                       <p class="product__stock">在庫なし</p>
                   </div>
                   <div class="order__btn">
-                      <oder-buttom >注文する</oder-buttom>
+                      <oder-buttom>注文する</oder-buttom>
                   </div>
               </div>
           </div>
@@ -24,7 +24,7 @@
 
       <div class="modal__btn">
           <oder-buttom>注文手続きへ進む</oder-buttom>
-          <oder-buttom>閉じる</oder-buttom>
+          <oder-buttom @click="closeButton()">閉じる</oder-buttom>
       </div>
   </div>
     </div>>
@@ -34,8 +34,16 @@
 import OderButtom from "@/components/ui/OderButtom.vue";
 
 export default {
-    components:{
+    components: {
         OderButtom
+    },
+    setup(props,context) {
+        function closeButton() {
+            context.emit('close')
+        }
+        return{
+            closeButton
+        }
     }
 }
 </script>
@@ -52,7 +60,7 @@ export default {
 }
 .modal{
     position: fixed;
-    top: 10vh;
+    top: 5vh;
     left: 35%;
     width: 30%;
     height: 85%;
