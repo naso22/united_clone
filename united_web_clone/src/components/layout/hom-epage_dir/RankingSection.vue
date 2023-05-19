@@ -1,9 +1,9 @@
 <template>
   <div class="ranking">
       <div class="ranking-title">
-              <h2>ランキング</h2>
-              <div class="ranking-title__s">RANKING</div>
-          <p class="ranking-title__s"><router-link to="/ranking">もっと見る</router-link></p>
+              <h2 class="ranking-title__main">ランキング</h2>
+              <h2 class="ranking-sub-title">RANKING</h2>
+          <p class="ranking-title__more"><router-link to="/ranking">もっと見る</router-link></p>
       </div>
           <ul>
                <product-card class="ranking__card"
@@ -55,7 +55,12 @@ export default {
     margin: 50px;
 }
 
-.ranking-title__s{
+.ranking-sub-title{
+    font-size: 0.75rem;
+    margin: 5px;
+}
+
+.ranking-title__more{
     font-size: 0.75rem;
     margin: 5px;
 }

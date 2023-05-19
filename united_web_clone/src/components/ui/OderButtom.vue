@@ -1,6 +1,6 @@
 <template>
   <button>
-      選択して注文
+     <slot></slot>
   </button>
 </template>
 
@@ -9,7 +9,7 @@ button{
     background-color: #818181;
     padding:7px 40px;
     font-size:0.8rem;
-    width:400px;
+    width:100%;
     color: #ffffff;
     cursor : pointer;
     margin-bottom: 10px;

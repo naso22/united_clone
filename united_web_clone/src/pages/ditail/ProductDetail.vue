@@ -2,7 +2,7 @@
     <the-sarch></the-sarch>
     <category-filter></category-filter>
   <div class="product">
-      <div>
+      <div class="product__container">
           <div class="product__img">
               <img :src=productImg>
           </div>
@@ -13,17 +13,17 @@
           </div>
       </div>
       <div class="product-detail">
-          <h2>{{productName}}</h2>
-          <p class="text_s">{{overView}}</p>
-          <div class="product-detail__price">
-              <p class="text_m">{{price}}</p>
-              <p class="text_s">{{houseCardPoint}}</p>
+          <h2 class="product__name">{{productName}}</h2>
+          <p class="product__overview">{{overView}}</p>
+          <div class="product__price">
+              <p class="product__price-value text_m">{{price}}</p>
+              <p class="product__points text_s">{{houseCardPoint}}</p>
           </div>
-          <p class="text_s">{{size}}</p>
-          <div class="action">
-          <OderButtom></OderButtom>
-              <div class="fovorite__btn">
-                  <div style="display: flex; justify-content: flex-end;">
+          <p class="product__size text_s">{{size}}</p>
+          <div class="product__action">
+          <OderButtom @click="oderButtom">選択して注文</OderButtom>
+              <div class="product__favorite-btn">
+                  <div class="product__favorite-btn-container">
                       <sarch-button>お気に入り追加</sarch-button>
                   </div>
               </div>
@@ -38,7 +38,7 @@
           </div>
       </div>
   </div>
-
+    <base-dialog v-if="modalOpen"></base-dialog>
 </template>
 
 <script>
@@ -48,16 +48,19 @@ import OderButtom from "@/components/ui/OderButtom.vue";
 import SarchButton from '@/components/ui/SarchButton.vue';
 import {ref, onMounted, computed} from "vue";
 import { useStore } from 'vuex';
+import BaseDialog from "@/components/layout/OderDialog/BaseDialog.vue";
 
 export default {
     components:{
+        BaseDialog,
         OderButtom,
         TheSarch,
         CategoryFilter,
-        SarchButton
+        SarchButton,
     },
     props:['id'],
     setup(props){
+
         const selectedProduct = ref('')
         const store =useStore();
 
@@ -90,6 +93,11 @@ export default {
             return selectedProduct.value.size
         })
 
+        let modalOpen =ref(false);
+        function oderButtom(){
+           modalOpen.value =!modalOpen.value
+        }
+
 
         return {
             productImg,
@@ -97,13 +105,24 @@ export default {
             overView,
             price,
             houseCardPoint,
-            size
+            size,
+            oderButtom,
+            modalOpen
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+}
 .product__img{
     width:500px ;
     height: 600px;
@@ -122,10 +141,12 @@ export default {
 width: 400px;
 }
 
-.fovorite__btn{
+.product__favorite-btn-container{
     display: flex;
     justify-content: flex-end;
     margin-bottom: 60px;
+    margin-top: 20px;
+
 }
 
 .product__menu{
@@ -133,14 +154,14 @@ width: 400px;
     justify-content: space-between;
 }
 
-.action{
+.product__action{
     margin-top: 20px;
 
 
 }
 
 
-.product-detail__price{
+.product__price-value{
   margin-top:25px ;
     margin-bottom:25px ;
 }
