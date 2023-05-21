@@ -1,12 +1,21 @@
 <template>
-    <home-page></home-page>
-  <h2>allpage</h2>
+    <the-sarch></the-sarch>
+    <category-filter></category-filter>
+    <product-slider></product-slider>
+    <news-component></news-component>
+    <ranking-section></ranking-section>
+    <h2>allpage</h2>
 </template>
 <script>
-import HomePage from "@/components/layout/hom-epage_dir/HomePage.vue";
+import ProductSlider from "@/components/layout/hom-epage_dir/ProductSlider.vue";
+import TheSarch from "@/components/layout/hom-epage_dir/TheSarch.vue";
+import RankingSection from "@/components/layout/hom-epage_dir/RankingSection.vue";
+import NewsComponent from "@/components/layout/hom-epage_dir/NewsComponent.vue";
+import CategoryFilter from "@/components/layout/hom-epage_dir/CategoryFilter.vue";
+
 export default {
-    components:{
-        HomePage
+    components: {
+        CategoryFilter, NewsComponent, RankingSection, TheSarch, ProductSlider,
     }
 }
 </script>

@@ -2,31 +2,22 @@
     <the-sarch></the-sarch>
     <category-filter></category-filter>
     <div class="product">
-        <div class="product__container">
             <div class="product__img">
                 <img :src=productImg>
             </div>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
         <div class="product-detail">
-            <h2 class="product__name">{{ productName }}</h2>
-            <p class="product__overview">{{ overView }}</p>
-            <div class="product__price">
-                <p class="product__price-value text_m">{{ price }}</p>
-                <p class="product__points text_s">{{ houseCardPoint }}</p>
+            <h2 class="product-detail__name">{{ productName }}</h2>
+            <p class="product-detail__overview">{{ overView }}</p>
+            <div class="product-price">
+                <p class="product-price__value text_m">{{ price }}</p>
+                <p class="product-price__points text_s">{{ houseCardPoint }}</p>
             </div>
             <p class="product__size text_s">{{ size }}</p>
-            <div class="product__action">
-                <OderButtom @click="oderButtom" class="product__buy-btn-ercontainer">選択して注文</OderButtom>
-                <div class="product__favorite-btn">
-                    <div class="product__favorite-btn-container">
+            <div class="product-action">
+                <OderButtom @click="oderButtom" class="product-actions__order-button">選択して注文</OderButtom>
+                    <div class="product-actions__favorite-button-container">
                         <sarch-button @click="fovoliteModal">お気に入り追加</sarch-button>
                     </div>
-                </div>
             </div>
             <div>
                 <ul class="product__menu">
@@ -68,7 +59,6 @@ export default {
 
         const selectedProduct = ref('')
         const store = useStore();
-
         onMounted(() => {
             selectedProduct.value = store.getters['products/products'].find(
                 (product) => product.id === props.id)
@@ -100,20 +90,22 @@ export default {
 
         let modalOpen = ref(false);
 
-        const foverite =ref('')
+        const foverite = ref('')
+
         function oderButtom() {
-            foverite.value ='商品を注文する'
+            foverite.value = '商品を注文する'
             modalOpen.value = true
 
         }
 
-        function fovoliteModal(){
-             foverite.value ='お気に入り'
+        function fovoliteModal() {
+            foverite.value = 'お気に入り'
             modalOpen.value = true
 
         }
+
         function cloesButtom() {
-            foverite.value =''
+            foverite.value = ''
             modalOpen.value = false
         }
 
@@ -154,7 +146,13 @@ export default {
     width: 400px;
 }
 
-.product__favorite-btn-container {
+
+.product-detail__name {
+    margin-top: 30px;
+    font-size: 2rem;
+}
+
+.product-actions__favorite-button-container{
     display: flex;
     justify-content: flex-end;
     margin-bottom: 60px;
@@ -162,7 +160,7 @@ export default {
 
 }
 
-.product__buy-btn-ercontainer{
+.product-actions__order-button {
     height: 50px;
 }
 
@@ -171,14 +169,14 @@ export default {
     justify-content: space-between;
 }
 
-.product__action {
+.product-action {
     margin-top: 20px;
 
 
 }
 
 
-.product__price-value {
+.product-price__value {
     margin-top: 25px;
     margin-bottom: 25px;
 }
@@ -190,10 +188,5 @@ export default {
 
 .text_m {
     font-size: 1.2rem;
-}
-
-h2 {
-    margin-top: 30px;
-    font-size: 2rem;
 }
 </style>

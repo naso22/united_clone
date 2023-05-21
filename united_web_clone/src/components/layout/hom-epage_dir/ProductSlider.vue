@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="block">
+        <div class="slide-block">
             <img src="https://store.united-arrows.co.jp/__banner_top/uploads/d1ed07ec1a3e6c6f1dbf73812aab2ed8.jpg">
         </div>
     </div>
@@ -17,7 +17,7 @@ div{
     width: 100%;
 }
 
-.block{
+.slide-block{
     max-width:1000px;
     height: 50vh;
     margin-bottom: 70px;

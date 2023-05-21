@@ -3,27 +3,23 @@
     <div class="modal">
         <h2 class="modal__titile">ショッピングバッグに追加</h2>
         <div class="modal__inner">
-            <div class="order-block">
-                <div class="order-block__box">
+            <oder-card>
+                <template v-slot:product-image>
                     <img class="order-block__img" :src=productImg alt="">
-                    <p class="product-coler"></p>
-                </div>
-                <div class="order-block__resousu">
-                    <div class="product">
-                        <p class="product__size">S</p>
-                        <p class="product__stock">在庫なし</p>
-                    </div>
-                    <div class="order-btn">
-                        <oder-buttom v-if="fovorite === '商品を注文する'">{{ fovorite }}</oder-buttom>
-                        <SarchButton v-else class="order-btn__fovorite" @click="toggleFavorite">
-                            <p  :class="{ redHeart: isFovorite }">❤</p>
-                            <p>{{ fovorite }}</p>
-                        </SarchButton>
-                    </div>
-                </div>
-            </div>
+                </template>
+                <template v-slot:product-info>
+                    <p class="product__size">S</p>
+                    <p class="product__stock">在庫なし</p>
+                </template>
+                <template v-slot:order-button>
+                    <oder-buttom v-if="fovorite === '商品を注文する'" class="order-btn__fovorite">{{ fovorite }}</oder-buttom>
+                    <SarchButton v-else class="order-btn__fovorite" @click="toggleFavorite">
+                        <p :class="{ redHeart: isFovorite }">❤</p>
+                        <p>{{ fovorite }}</p>
+                    </SarchButton>
+                </template>
+            </oder-card>
         </div>
-
         <div class="modal__btn">
             <oder-buttom>注文手続きへ進む</oder-buttom>
             <oder-buttom @click="closeButton">閉じる</oder-buttom>
@@ -34,8 +30,9 @@
 <script>
 import OderButtom from "@/components/ui/OderButtom.vue";
 import SarchButton from '@/components/ui/SarchButton.vue'
+import OderCard from '@/components/ui/OderCard.vue'
 import products from "@/store/modeuls/products"
-import { ref} from "vue";
+import {ref} from "vue";
 
 export default {
     computed: {
@@ -46,6 +43,7 @@ export default {
     components: {
         OderButtom,
         SarchButton,
+        OderCard
     },
     props: ['productImg', 'fovorite'],
     setup(props, context) {
@@ -54,8 +52,9 @@ export default {
         }
 
         let isFovorite = ref(false)
+
         function toggleFavorite() {
-            isFovorite.value =!isFovorite.value
+            isFovorite.value = !isFovorite.value
             console.log(isFovorite.value)
         }
 
@@ -81,16 +80,14 @@ export default {
 
 .modal {
     position: fixed;
-    top: 5vh;
-    left: 35%;
-    width: 30%;
-    height: 85%;
+    top: 0vh;
+    left: 30%;
+    width: 40%;
     z-index: 100;
     border-radius: 12px;
     border: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     padding: 0;
-    margin: 0;
     overflow: hidden;
     background-color: white;
     justify-content: space-between;
@@ -107,38 +104,13 @@ export default {
 
 .modal__inner {
     margin: 40px;
-    height: 65%;
-}
-
-.order-block {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px;
-}
-
-.order-block__box {
-    width: 200px;
+    height: 65vh;
 }
 
 .order-block__img {
     width: 70%;
 }
 
-.order-block__resousu {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-}
-
-.modal__btn {
-    margin: 20px;
-}
-
-.product {
-    width: 100px;
-}
-
-.product-coler,
 .product__size,
 .product__stock {
     font-size: 0.8rem;
@@ -148,15 +120,15 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 190px;
+    width: 200px;
 }
 
-.order-btn__mark {
-    width: 90%;
-}
-
-.redHeart{
+.redHeart {
     color: crimson;
+}
+
+.modal__btn {
+    margin: 10px;
 }
 
 </style>
