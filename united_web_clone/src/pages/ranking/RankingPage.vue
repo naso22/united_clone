@@ -1,6 +1,6 @@
 <template>
     <the-sarch></the-sarch>
-    <category-filter></category-filter>
+  <category-filter></category-filter>
   <div class="ranking-block">
           <h2>ランキング</h2>
       <div>
