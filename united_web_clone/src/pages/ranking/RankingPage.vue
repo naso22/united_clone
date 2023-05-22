@@ -28,7 +28,7 @@ import SarchButton from "@/components/ui/SarchButton.vue"
 import TheSarch from "@/components/layout/hom-epage_dir/TheSarch.vue";
 import CategoryFilter from '@/components/layout/hom-epage_dir/CategoryFilter.vue'
 import {useStore} from "vuex";
-import {computed} from "vue";
+import {computed, onMounted,} from "vue";
 export default({
     components: {
         SarchButton,
@@ -38,13 +38,20 @@ export default({
     },
     setup(){
         const store = useStore();
+        onMounted(()=>{
+            loadProducts()
+        })
+        function loadProducts(){
+            store.dispatch('products/loadProducts');
+        }
 
         const topFourProducts= computed(() =>{
-           return store.getters['products/products'];
+            const allProducts = store.getters['products/products'];
+            return allProducts
         });
-
-        return{topFourProducts}
-
+        return{
+            topFourProducts
+        }
     }
 })
 </script>

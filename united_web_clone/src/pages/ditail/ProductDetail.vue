@@ -95,7 +95,6 @@ export default {
         function oderButtom() {
             foverite.value = '商品を注文する'
             modalOpen.value = true
-
         }
 
         function fovoliteModal() {

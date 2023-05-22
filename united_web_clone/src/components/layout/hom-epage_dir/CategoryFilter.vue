@@ -1,11 +1,11 @@
 <template>
   <ul>
       <li>
-          <router-link to="/">WOMEN</router-link>
+          WOMEN
       </li>
 
       <li>
-          <router-link to="/men">MEN</router-link>
+         MEN
       </li>
 
       <li>

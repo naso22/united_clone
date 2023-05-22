@@ -21,25 +21,15 @@
 
 <script>
 import ProductCard from "@/components/ui/ProductCard.vue";
-import {computed} from "vue";
-import { useStore } from 'vuex';
+// import {computed} from "vue";
+// import { useStore } from 'vuex';
 
 export default {
     components:{
         ProductCard
     },
-    setup(){
-        const store = useStore();
-
-        const topFourProducts= computed(() =>{
-            const allProducts = store.getters['products/products'];
-            return allProducts.slice(0, 4);
-        });
-
-        return{topFourProducts}
-
+    props:['topFourProducts']
     }
-}
 </script>
 
 <style scoped>
