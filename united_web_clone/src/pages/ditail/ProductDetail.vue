@@ -56,36 +56,43 @@ export default {
     },
     props: ['id'],
     setup(props) {
-
-        const selectedProduct = ref('')
+        const selectedProduct = ref(null)
         const store = useStore();
         onMounted(() => {
+            loadProducts()
             selectedProduct.value = store.getters['products/products'].find(
                 (product) => product.id === props.id)
         });
+        async function loadProducts(){
+            await store.dispatch('products/loadProducts');
+            selectedProduct.value = store.getters['products/products'].find(
+                (product) => product.id === props.id
+            );
+        }
+
 
         const productImg = computed(() => {
-            return selectedProduct.value.img
+            return selectedProduct.value ? selectedProduct.value.img : '';
         })
 
         const productName = computed(() => {
-            return selectedProduct.value.name
+            return selectedProduct.value ? selectedProduct.value.name :''
         })
 
         const overView = computed(() => {
-            return selectedProduct.value.overview
+            return selectedProduct.value ?selectedProduct.value.overview:''
         })
 
         const price = computed(() => {
-            return selectedProduct.value.price
+            return selectedProduct.value ?selectedProduct.value.price:''
         })
 
         const houseCardPoint = computed(() => {
-            return selectedProduct.value.points
+            return selectedProduct.value ?selectedProduct.value.points:''
         })
 
         const size = computed(() => {
-            return selectedProduct.value.size
+            return selectedProduct.value ?selectedProduct.value.size:''
         })
 
         let modalOpen = ref(false);

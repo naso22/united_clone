@@ -10,7 +10,7 @@
           </div>
               <ul>
                   <product-card class="product"
-                                v-for="product in topFourProducts"
+                                v-for="product in allProduct"
                                 :key='product.id'
                                 :id='product.id'
                                 :img="product.img"
@@ -45,12 +45,13 @@ export default({
             store.dispatch('products/loadProducts');
         }
 
-        const topFourProducts= computed(() =>{
+        const allProduct= computed(() =>{
             const allProducts = store.getters['products/products'];
             return allProducts
         });
+
         return{
-            topFourProducts
+            allProduct
         }
     }
 })
