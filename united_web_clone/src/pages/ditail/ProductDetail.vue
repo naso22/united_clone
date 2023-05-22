@@ -33,7 +33,8 @@
             v-if="modalOpen"
             @close="cloesButtom"
             :product-img="productImg"
-            :fovorite="foverite">
+            :fovorite="foverite"
+    :selected-product="selectedProduct">
     </base-dialog>
 </template>
 
@@ -60,8 +61,6 @@ export default {
         const store = useStore();
         onMounted(() => {
             loadProducts()
-            selectedProduct.value = store.getters['products/products'].find(
-                (product) => product.id === props.id)
         });
         async function loadProducts(){
             await store.dispatch('products/loadProducts');
@@ -96,7 +95,6 @@ export default {
         })
 
         let modalOpen = ref(false);
-
         const foverite = ref('')
 
         function oderButtom() {
@@ -107,7 +105,6 @@ export default {
         function fovoliteModal() {
             foverite.value = 'お気に入り'
             modalOpen.value = true
-
         }
 
         function cloesButtom() {
@@ -127,6 +124,7 @@ export default {
             modalOpen,
             cloesButtom,
             foverite,
+            selectedProduct
         }
     }
 }

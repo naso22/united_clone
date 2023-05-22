@@ -33,7 +33,7 @@ import SarchButton from '@/components/ui/SarchButton.vue'
 import OderCard from '@/components/ui/OderCard.vue'
 import products from "@/store/modeuls/products"
 import {ref} from "vue";
-
+import {useStore} from 'vuex';
 export default {
     computed: {
         products() {
@@ -45,17 +45,17 @@ export default {
         SarchButton,
         OderCard
     },
-    props: ['productImg', 'fovorite'],
+    props: ['productImg', 'fovorite','selectedProduct'],
     setup(props, context) {
         function closeButton() {
             context.emit('close')
         }
 
         let isFovorite = ref(false)
+        const store = useStore()
 
         function toggleFavorite() {
-            isFovorite.value = !isFovorite.value
-            console.log(isFovorite.value)
+            store.dispatch('favorite/addFavorite',props.selectedProduct)
         }
 
         return {
@@ -80,9 +80,9 @@ export default {
 
 .modal {
     position: fixed;
-    top: 0vh;
-    left: 30%;
-    width: 40%;
+    top: 3vh;
+    left: 35%;
+    width:30%;
     z-index: 100;
     border-radius: 12px;
     border: none;
@@ -108,7 +108,7 @@ export default {
 }
 
 .order-block__img {
-    width: 70%;
+    width: 100%;
 }
 
 .product__size,

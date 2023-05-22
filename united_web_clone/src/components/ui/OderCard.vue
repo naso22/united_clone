@@ -20,10 +20,11 @@
 <style scoped>
 .order-block {
     display: flex;
+    justify-content: space-around;
 }
 
 .order-block__box {
-    width: 100%;
+    width: 100px;
 }
 
 .product {
