@@ -22,7 +22,7 @@
           </div>
           <div class="content">
               <div>
-                  <router-link to="/favorite">
+                  <router-link to="/favorites">
                       <img class="header__img" src="https://store.united-arrows.co.jp/res/img/common/ico-favourite.svg" alt="">
                   </router-link>
               </div>

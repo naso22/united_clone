@@ -10,7 +10,7 @@ const router = createRouter({
         {path:'/all',component:AllPage},
         {path:'/ranking' ,component:RankingPage},
         {path:'/product/:id', component:ProductDetail, props:true},
-        {path :'/favorite', component:FovoritePage,}
+        {path :'/favorites', component:FovoritePage,}
     ]
 });
 

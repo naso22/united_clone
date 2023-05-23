@@ -16,16 +16,9 @@
       <div class="fovorite-product">
           <div class="fovorite-product__box">
               <ul>
-                  <li>
-                      <img src="" alt="">
-                      <div>
-                          <p></p>
-                          <p></p>
-                          <p></p>
-                          <p></p>
-                          <p></p>
-                      </div>
-                  </li>
+                 <product-card>
+
+                 </product-card>
               </ul>
           </div>
       </div>
@@ -35,11 +28,31 @@
 <script>
 import TheSarch from "@/components/layout/hom-epage_dir/TheSarch.vue";
 import CategoryFilter from "@/components/layout/hom-epage_dir/CategoryFilter.vue";
+import ProductCard from "@/components/ui/ProductCard.vue";
+import {useStore} from "vuex";
+import {computed, onMounted} from "vue";
 
 export default {
     components:{
+        ProductCard,
         TheSarch,
         CategoryFilter
+    },
+    setup(){
+        const store = useStore();
+        onMounted(()=>{
+            loadProducts()
+        })
+        function loadProducts(){
+            store.dispatch('favorites/loadFavorite');
+        }
+
+        const favoriteProducts= computed(() =>{
+            return store.getters['favorites/products'];
+        });
+        return{
+            favoriteProducts
+        }
     }
 }
 </script>

@@ -14,7 +14,7 @@
                 <template v-slot:order-button>
                     <oder-buttom v-if="fovorite === '商品を注文する'" class="order-btn__fovorite">{{ fovorite }}</oder-buttom>
                     <SarchButton v-else class="order-btn__fovorite" @click="toggleFavorite">
-                        <p :class="{ redHeart: isFovorite }">❤</p>
+                        <p :class="{ redHeart: isFavorite }">❤</p>
                         <p>{{ fovorite }}</p>
                     </SarchButton>
                 </template>
@@ -32,7 +32,7 @@ import OderButtom from "@/components/ui/OderButtom.vue";
 import SarchButton from '@/components/ui/SarchButton.vue'
 import OderCard from '@/components/ui/OderCard.vue'
 import products from "@/store/modeuls/products"
-import {ref} from "vue";
+//import {computed,} from "vue";
 import {useStore} from 'vuex';
 export default {
     computed: {
@@ -50,18 +50,20 @@ export default {
         function closeButton() {
             context.emit('close')
         }
-
-        let isFovorite = ref(false)
         const store = useStore()
 
         function toggleFavorite() {
-            store.dispatch('favorite/addFavorite',props.selectedProduct)
+            store.dispatch('favorites/addFavorite',props.selectedProduct)
         }
+
+        // const isFavorite = computed(()=>{
+        //     store.getters('favorites/favorites')
+        // })
 
         return {
             closeButton,
             toggleFavorite,
-            isFovorite
+            //isFavorite
         }
     }
 }
