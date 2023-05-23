@@ -3,7 +3,7 @@ export default{
         state.favorites.push(payload)
     },
 
-    // setProducts(state,payload){
-    //     state.favorites = payload;
-    // },
+    setFavorite(state,payload){
+        state.favorites = payload;
+    },
 }

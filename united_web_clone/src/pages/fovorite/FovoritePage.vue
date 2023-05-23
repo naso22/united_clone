@@ -15,9 +15,15 @@
       </div>
       <div class="fovorite-product">
           <div class="fovorite-product__box">
-              <ul>
-                 <product-card>
-
+              <ul class="fovorite-product__list">
+                 <product-card class="favorite-card"
+                  v-for="product in favoriteProducts"
+                  :key='product.id'
+                  :id='product.id'
+                  :img="product.img"
+                  :maker='product.maker'
+                  :kinds='product.kinds'
+                  :price=product.price>
                  </product-card>
               </ul>
           </div>
@@ -41,14 +47,14 @@ export default {
     setup(){
         const store = useStore();
         onMounted(()=>{
-            loadProducts()
+            loadFavorite()
         })
-        function loadProducts(){
+        function loadFavorite(){
             store.dispatch('favorites/loadFavorite');
         }
 
         const favoriteProducts= computed(() =>{
-            return store.getters['favorites/products'];
+            return store.getters['favorites/favorites'];
         });
         return{
             favoriteProducts
@@ -73,6 +79,10 @@ export default {
    border-bottom: 1px solid #858181;
 }
 
+.fovorite-product__box{
+
+}
+
 
 .fovorite-nav{
     display: flex;
@@ -81,5 +91,18 @@ export default {
 
 .favorite-nav__item{
     margin-right: 20px;
+}
+
+
+
+.fovorite-product__list{
+    display: flex;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.favorite-card{
+ max-width: 200px;
+    margin: 20px;
 }
 </style>
