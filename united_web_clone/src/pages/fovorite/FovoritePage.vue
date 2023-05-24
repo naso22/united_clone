@@ -16,15 +16,15 @@
       <div class="fovorite-product">
           <div class="fovorite-product__box">
               <ul class="fovorite-product__list">
-                 <product-card class="favorite-card"
-                  v-for="product in favoriteProducts"
-                  :key='product.id'
-                  :id='product.id'
-                  :img="product.img"
-                  :maker='product.maker'
-                  :kinds='product.kinds'
-                  :price=product.price>
-                 </product-card>
+                      <favorite-card
+                                    v-for="product in favoriteProducts"
+                                    :key='product.id'
+                                    :id='product.id'
+                                    :img="product.img"
+                                    :maker='product.maker'
+                                    :kinds='product.kinds'
+                                    :price=product.price>
+                      </favorite-card>
               </ul>
           </div>
       </div>
@@ -34,13 +34,13 @@
 <script>
 import TheSarch from "@/components/layout/hom-epage_dir/TheSarch.vue";
 import CategoryFilter from "@/components/layout/hom-epage_dir/CategoryFilter.vue";
-import ProductCard from "@/components/ui/ProductCard.vue";
 import {useStore} from "vuex";
 import {computed, onMounted} from "vue";
+import FavoriteCard from "@/components/ui/FavoriteCard.vue";
 
 export default {
     components:{
-        ProductCard,
+        FavoriteCard,
         TheSarch,
         CategoryFilter
     },
@@ -97,12 +97,10 @@ export default {
 
 .fovorite-product__list{
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin: 0 auto;
     width: 1000px;
 }
 
-.favorite-card{
- max-width: 200px;
-    margin: 20px;
-}
 </style>

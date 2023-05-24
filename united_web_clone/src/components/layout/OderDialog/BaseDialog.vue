@@ -13,7 +13,7 @@
                 </template>
                 <template v-slot:order-button>
                     <oder-buttom v-if="fovorite === '商品を注文する'" class="order-btn__fovorite">
-                        {{fovorite}}
+                        {{ fovorite }}
                     </oder-buttom>
                     <SarchButton v-else class="order-btn__fovorite" @click="toggleFavorite">
                         <p :class="{ redHeart: isFavorite }">❤</p>
@@ -48,16 +48,16 @@ export default {
         SarchButton,
         OderCard
     },
-    props: ['productImg', 'fovorite', 'selectedProduct','favoriteProducts'],
+    props: ['productImg', 'fovorite', 'selectedProduct', 'favoriteProducts'],
     setup(props, context) {
         const store = useStore()
 
         const isFavorite = computed(() => {
-             return props.selectedProduct.id === props.favoriteProducts?.id
+            return props.selectedProduct.id === props.favoriteProducts?.id
         })
 
-       async function toggleFavorite() {
-          await  store.dispatch('favorites/addFavorite', props.selectedProduct)
+        async function toggleFavorite() {
+            await store.dispatch('favorites/addFavorite', props.selectedProduct)
             context.emit('load')
         }
 
