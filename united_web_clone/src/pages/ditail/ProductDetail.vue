@@ -32,6 +32,7 @@
     <base-dialog
             v-if="modalOpen"
             @close="cloesButtom"
+            @load="loadFavorite"
             :product-img="productImg"
             :fovorite="foverite"
             :selected-product="selectedProduct"
@@ -59,12 +60,13 @@ export default {
     },
     props: ['id'],
     setup(props) {
-        const selectedProduct = ref(null)
-        const store = useStore();
         onMounted(() => {
             loadProducts()
             loadFavorite()
         });
+
+        const selectedProduct = ref(null)
+        const store = useStore();
 
         async function loadProducts() {
             await store.dispatch('products/loadProducts');
@@ -137,7 +139,8 @@ export default {
             cloesButtom,
             foverite,
             selectedProduct,
-            favoriteProducts
+            favoriteProducts,
+            loadFavorite
         }
     }
 }

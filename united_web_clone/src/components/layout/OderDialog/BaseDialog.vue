@@ -35,7 +35,7 @@ import SarchButton from '@/components/ui/SarchButton.vue'
 import OderCard from '@/components/ui/OderCard.vue'
 import products from "@/store/modeuls/products"
 import {useStore} from 'vuex';
-import { onMounted,computed} from "vue";
+import {computed} from "vue";
 
 export default {
     computed: {
@@ -51,35 +51,20 @@ export default {
     props: ['productImg', 'fovorite', 'selectedProduct','favoriteProducts'],
     setup(props, context) {
         const store = useStore()
-        onMounted(() => {
-            // loadFavorite()
-        })
-
-        // function loadFavorite() {
-        //     store.dispatch('favorites/loadFavorite');
-        // }
-
-        // const favoriteProducts = computed(() => {
-        //     return store.getters['favorites/favorites'];
-        // });
-
-        // const favoriteProductsId = favoriteProducts.value.map(product => product.name);
 
         const isFavorite = computed(() => {
              return props.selectedProduct.id === props.favoriteProducts?.id
         })
 
+       async function toggleFavorite() {
+          await  store.dispatch('favorites/addFavorite', props.selectedProduct)
+            context.emit('load')
+        }
+
+
         function closeButton() {
             context.emit('close')
         }
-
-        function toggleFavorite() {
-            store.dispatch('favorites/addFavorite', props.selectedProduct)
-        }
-
-        // const isFavorite = computed(()=>{
-        //     store.getters('favorites/favorites')
-        // })
 
         return {
             closeButton,

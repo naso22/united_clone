@@ -8,15 +8,5 @@ const store = createStore({
         products:ProductsModeuls,
         favorites:FavoriteModeuls
     },
-    state(){
-        return{
-            userId:'c3'
-        };
-    },
-    getters:{
-        userId(state){
-            return state.userId;
-        }
-    }
 })
 export default store;
