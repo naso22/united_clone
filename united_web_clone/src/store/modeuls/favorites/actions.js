@@ -3,6 +3,7 @@ export default {
         const productId = data.id;
         const favoriteData = data;
 
+
         await fetch(`https://prodact-data-default-rtdb.firebaseio.com/favorite/${productId}.json`, {
             method: 'PUT',
             body: JSON.stringify(favoriteData)
@@ -14,7 +15,6 @@ export default {
     async loadFavorite(context) {
         const response = await fetch(`https://prodact-data-default-rtdb.firebaseio.com/favorite.json`);
         const responseData = await response.json();
-        console.log(responseData)
 
         const favorites = []; // 変数productsを追加
 

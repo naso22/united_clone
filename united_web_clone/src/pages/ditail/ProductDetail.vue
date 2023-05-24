@@ -2,9 +2,9 @@
     <the-sarch></the-sarch>
     <category-filter></category-filter>
     <div class="product">
-            <div class="product__img">
-                <img :src=productImg>
-            </div>
+        <div class="product__img">
+            <img :src=productImg>
+        </div>
         <div class="product-detail">
             <h2 class="product-detail__name">{{ productName }}</h2>
             <p class="product-detail__overview">{{ overView }}</p>
@@ -15,9 +15,9 @@
             <p class="product__size text_s">{{ size }}</p>
             <div class="product-action">
                 <OderButtom @click="oderButtom" class="product-actions__order-button">選択して注文</OderButtom>
-                    <div class="product-actions__favorite-button-container">
-                        <sarch-button @click="fovoliteModal">お気に入り追加</sarch-button>
-                    </div>
+                <div class="product-actions__favorite-button-container">
+                    <sarch-button @click="fovoliteModal">お気に入り追加</sarch-button>
+                </div>
             </div>
             <div>
                 <ul class="product__menu">
@@ -34,7 +34,9 @@
             @close="cloesButtom"
             :product-img="productImg"
             :fovorite="foverite"
-    :selected-product="selectedProduct">
+            :selected-product="selectedProduct"
+            :favorite-products="favoriteProducts"
+    >
     </base-dialog>
 </template>
 
@@ -61,37 +63,47 @@ export default {
         const store = useStore();
         onMounted(() => {
             loadProducts()
+            loadFavorite()
         });
-        async function loadProducts(){
+
+        async function loadProducts() {
             await store.dispatch('products/loadProducts');
             selectedProduct.value = store.getters['products/products'].find(
                 (product) => product.id === props.id
             );
         }
 
+        const favoriteProducts = ref(null);
+
+        async function loadFavorite() {
+            await store.dispatch('favorites/loadFavorite');
+            favoriteProducts.value = store.getters['favorites/favorites'].find(
+                (product) => product.id === props.id
+            );
+        }
 
         const productImg = computed(() => {
             return selectedProduct.value ? selectedProduct.value.img : '';
         })
 
         const productName = computed(() => {
-            return selectedProduct.value ? selectedProduct.value.name :''
+            return selectedProduct.value ? selectedProduct.value.name : ''
         })
 
         const overView = computed(() => {
-            return selectedProduct.value ?selectedProduct.value.overview:''
+            return selectedProduct.value ? selectedProduct.value.overview : ''
         })
 
         const price = computed(() => {
-            return selectedProduct.value ?selectedProduct.value.price:''
+            return selectedProduct.value ? selectedProduct.value.price : ''
         })
 
         const houseCardPoint = computed(() => {
-            return selectedProduct.value ?selectedProduct.value.points:''
+            return selectedProduct.value ? selectedProduct.value.points : ''
         })
 
         const size = computed(() => {
-            return selectedProduct.value ?selectedProduct.value.size:''
+            return selectedProduct.value ? selectedProduct.value.size : ''
         })
 
         let modalOpen = ref(false);
@@ -124,7 +136,8 @@ export default {
             modalOpen,
             cloesButtom,
             foverite,
-            selectedProduct
+            selectedProduct,
+            favoriteProducts
         }
     }
 }
@@ -156,7 +169,7 @@ export default {
     font-size: 2rem;
 }
 
-.product-actions__favorite-button-container{
+.product-actions__favorite-button-container {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 60px;

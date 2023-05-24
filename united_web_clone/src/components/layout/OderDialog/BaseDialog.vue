@@ -12,7 +12,9 @@
                     <p class="product__stock">在庫なし</p>
                 </template>
                 <template v-slot:order-button>
-                    <oder-buttom v-if="fovorite === '商品を注文する'" class="order-btn__fovorite">{{ fovorite }}</oder-buttom>
+                    <oder-buttom v-if="fovorite === '商品を注文する'" class="order-btn__fovorite">
+                        {{fovorite}}
+                    </oder-buttom>
                     <SarchButton v-else class="order-btn__fovorite" @click="toggleFavorite">
                         <p :class="{ redHeart: isFavorite }">❤</p>
                         <p>{{ fovorite }}</p>
@@ -32,8 +34,9 @@ import OderButtom from "@/components/ui/OderButtom.vue";
 import SarchButton from '@/components/ui/SarchButton.vue'
 import OderCard from '@/components/ui/OderCard.vue'
 import products from "@/store/modeuls/products"
-//import {computed,} from "vue";
 import {useStore} from 'vuex';
+import { onMounted,computed} from "vue";
+
 export default {
     computed: {
         products() {
@@ -45,15 +48,33 @@ export default {
         SarchButton,
         OderCard
     },
-    props: ['productImg', 'fovorite','selectedProduct'],
+    props: ['productImg', 'fovorite', 'selectedProduct','favoriteProducts'],
     setup(props, context) {
+        const store = useStore()
+        onMounted(() => {
+            // loadFavorite()
+        })
+
+        // function loadFavorite() {
+        //     store.dispatch('favorites/loadFavorite');
+        // }
+
+        // const favoriteProducts = computed(() => {
+        //     return store.getters['favorites/favorites'];
+        // });
+
+        // const favoriteProductsId = favoriteProducts.value.map(product => product.name);
+
+        const isFavorite = computed(() => {
+             return props.selectedProduct.id === props.favoriteProducts?.id
+        })
+
         function closeButton() {
             context.emit('close')
         }
-        const store = useStore()
 
         function toggleFavorite() {
-            store.dispatch('favorites/addFavorite',props.selectedProduct)
+            store.dispatch('favorites/addFavorite', props.selectedProduct)
         }
 
         // const isFavorite = computed(()=>{
@@ -63,7 +84,7 @@ export default {
         return {
             closeButton,
             toggleFavorite,
-            //isFavorite
+            isFavorite
         }
     }
 }
@@ -84,7 +105,7 @@ export default {
     position: fixed;
     top: 3vh;
     left: 35%;
-    width:30%;
+    width: 30%;
     z-index: 100;
     border-radius: 12px;
     border: none;
