@@ -23,7 +23,8 @@
                                     :img="product.img"
                                     :maker='product.maker'
                                     :kinds='product.kinds'
-                                    :price=product.price>
+                                    :price=product.price
+                                    @load-favorite="loadFavorite">
                       </favorite-card>
               </ul>
           </div>
@@ -49,15 +50,18 @@ export default {
         onMounted(()=>{
             loadFavorite()
         })
-        function loadFavorite(){
-            store.dispatch('favorites/loadFavorite');
+       function loadFavorite(){
+           store.dispatch('favorites/loadFavorite');
+           console.log('lll')
         }
 
         const favoriteProducts= computed(() =>{
             return store.getters['favorites/favorites'];
         });
+
         return{
-            favoriteProducts
+            favoriteProducts,
+            loadFavorite
         }
     }
 }
