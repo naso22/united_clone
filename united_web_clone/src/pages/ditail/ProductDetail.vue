@@ -32,7 +32,8 @@
     <base-dialog
             v-if="modalOpen"
             @close="cloesButtom"
-            @load="loadFavorite"
+            @load-product="loadProducts"
+            @load-favorite="loadFavorite"
             :product-img="productImg"
             :fovorite="foverite"
             :selected-product="selectedProduct"

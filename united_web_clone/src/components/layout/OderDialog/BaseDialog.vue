@@ -57,10 +57,13 @@ export default {
         })
 
         async function toggleFavorite() {
-            await store.dispatch('favorites/addFavorite', props.selectedProduct)
-            context.emit('load')
+            if (isFavorite.value) {
+                await store.dispatch('favorites/deleteFavorite', props.selectedProduct.id);
+            } else {
+                await store.dispatch('favorites/addFavorite', props.selectedProduct);
+            }
+            context.emit('load-favorite');
         }
-
 
         function closeButton() {
             context.emit('close')

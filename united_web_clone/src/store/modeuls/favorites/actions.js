@@ -3,13 +3,20 @@ export default {
         const productId = data.id;
         const favoriteData = data;
 
-
         await fetch(`https://prodact-data-default-rtdb.firebaseio.com/favorite/${productId}.json`, {
             method: 'PUT',
             body: JSON.stringify(favoriteData)
         });
         context.commit('addFavorite', favoriteData)
     },
+
+    async deleteFavorite(context, productId) {
+        await fetch(`https://prodact-data-default-rtdb.firebaseio.com/favorite/${productId}.json`, {
+            method: 'DELETE',
+        });
+        context.commit('deleteFavorite', productId);
+    },
+
 
 
     async loadFavorite(context) {

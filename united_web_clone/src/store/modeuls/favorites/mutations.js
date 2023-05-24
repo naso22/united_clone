@@ -5,4 +5,7 @@ export default{
     setFavorite(state,payload){
         state.favorites = payload;
     },
+    deleteFavorite(state,payload){
+        console.log(payload)
+    }
 }
