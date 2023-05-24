@@ -101,7 +101,6 @@ export default {
 
 .fovorite-product__list{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 auto;
     width: 1000px;

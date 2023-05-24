@@ -1,18 +1,18 @@
 <template>
-    <li>
-        <router-link :to="productDetailLink" class="flex">
+    <li class="flex">
+        <router-link :to="productDetailLink">
             <div>
                 <img :src="img" alt="">
             </div>
+        </router-link>
             <div>
                 <p>{{ maker }}</p>
                 <p>{{ kinds }}</p>
                 <p>{{ price }}</p>
-                <oder-buttom class="oder-btn">予約する</oder-buttom>
-            </div>
-        </router-link>
-            <div>
-                <button @click="deleteFavorite">削除</button>
+                <oder-buttom class="oder-btn">購入する</oder-buttom>
+                <div class="delete-btn">
+                    <button @click="deleteFavorite">削除</button>
+                </div>
             </div>
     </li>
 </template>
@@ -57,16 +57,25 @@ p {
 
 li {
     width: 300px;
-    margin: 10px;
+    margin: 20px 10px;
 }
 
 .flex {
     display: flex;
     justify-content: space-between;
+    margin: 15px;
 }
 
 .oder-btn {
     height: 35px;
-    width: 100%;
+    width: 90%;
+    float: right;
+    margin-top: 10px;
+}
+
+.delete-btn{
+    float: right;
+    margin-top:5px ;
+
 }
 </style>
