@@ -21,15 +21,15 @@ import {computed} from "vue";
 export default {
     props: ['id', 'img', 'maker', 'kinds', 'price','name'],
 
-    setup(props, context) {
+    setup(props,context) {
         const productDetailLink = computed(() => {
             return '/product' + '/' + props.id
         });
         const store = useStore()
 
         async function deleteFavorite() {
-            await store.dispatch('favorites/deleteFavorite', props.id);
-            context.emit('load-favorite')
+            await store.dispatch('cartProducts/deleteCartProducts', props.id);
+            context.emit('load-cart')
         }
 
         return {

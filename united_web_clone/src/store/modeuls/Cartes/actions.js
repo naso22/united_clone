@@ -10,6 +10,13 @@ export default {
         context.commit('addCartProduct', CartProductData)
     },
 
+    async deleteCartProducts(context,id){
+        await fetch(`https://prodact-data-default-rtdb.firebaseio.com/carts/${id}.json`, {
+            method: 'DELETE',
+        });
+        context.commit('deleteCartProduct', id);
+    },
+
     async loadCartProducts(context) {
         const response = await fetch(`https://prodact-data-default-rtdb.firebaseio.com/carts.json`);
         const CartProductData = await response.json();

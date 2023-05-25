@@ -15,11 +15,15 @@
                   :maker='product.maker'
                   :kinds='product.kinds'
                   :price='product.price'
-                  :name="product.name">
+                  :name="product.name"
+                  @load-cart="loadCartProducts">
                   </cart-card>
 
               </ul>
           </div>
+      <div>
+
+      </div>
   </div>
 </template>
 <script>
@@ -50,6 +54,7 @@ export default {
 
         return{
             cartProducts,
+            loadCartProducts
         }
     }
 }
