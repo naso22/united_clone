@@ -12,7 +12,7 @@
                     <p class="product__stock">在庫なし</p>
                 </template>
                 <template v-slot:order-button>
-                    <oder-buttom v-if="fovorite === '商品を注文する'" class="order-btn__fovorite">
+                    <oder-buttom v-if="fovorite === '商品を注文する'" class="order-btn__fovorite" @click="toggleCart">
                         {{ fovorite }}
                     </oder-buttom>
                     <SarchButton v-else class="order-btn__fovorite" @click="toggleFavorite">
@@ -65,6 +65,12 @@ export default {
             context.emit('load-favorite');
         }
 
+        async function toggleCart() {
+            await store.dispatch('cartProducts/addCartProduct', props.selectedProduct);
+            context.emit('load-favorite');
+        }
+
+
         function closeButton() {
             context.emit('close')
         }
@@ -72,7 +78,8 @@ export default {
         return {
             closeButton,
             toggleFavorite,
-            isFavorite
+            isFavorite,
+            toggleCart
         }
     }
 }

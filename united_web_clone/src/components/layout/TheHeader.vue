@@ -27,9 +27,9 @@
                   </router-link>
               </div>
               <div>
-                  <a href="">
+                  <router-link to="/cart">
                       <img src="https://img.icons8.com/?size=1x&id=15893&format=png" alt="">
-                  </a>
+                  </router-link>
               </div>
           </div>
       </div>

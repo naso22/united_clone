@@ -85,6 +85,7 @@ export default {
             );
         }
 
+
         const productImg = computed(() => {
             return selectedProduct.value ? selectedProduct.value.img : '';
         })
