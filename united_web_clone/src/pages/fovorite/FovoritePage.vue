@@ -23,6 +23,7 @@
                                     :img="product.img"
                                     :maker='product.maker'
                                     :kinds='product.kinds'
+                                    :points="product.points"
                                     :price=product.price
                                     @load-favorite="loadFavorite">
                       </favorite-card>
@@ -52,7 +53,6 @@ export default {
         })
        function loadFavorite(){
            store.dispatch('favorites/loadFavorite');
-           console.log('lll')
         }
 
         const favoriteProducts= computed(() =>{

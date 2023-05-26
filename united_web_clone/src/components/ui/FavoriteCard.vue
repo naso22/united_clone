@@ -9,7 +9,7 @@
                 <p>{{ maker }}</p>
                 <p>{{ kinds }}</p>
                 <p>{{ price }}</p>
-                <oder-buttom class="oder-btn">購入する</oder-buttom>
+                <oder-buttom class="oder-btn" @click="toggleCart">購入する</oder-buttom>
                 <div class="delete-btn">
                     <button @click="deleteFavorite">削除</button>
                 </div>
@@ -24,7 +24,7 @@ import {useStore} from "vuex";
 
 export default {
     components: {OderButtom},
-    props: ['id', 'img', 'maker', 'kinds', 'price'],
+    props: ['id', 'img', 'maker', 'kinds', 'points','price'],
 
     setup(props,context) {
         const productDetailLink = computed(() => {
@@ -35,10 +35,15 @@ export default {
          await store.dispatch('favorites/deleteFavorite', props.id);
          context.emit('load-favorite')
         }
+        async function toggleCart() {
+            await store.dispatch('cartProducts/addCartProduct', props);
+            context.emit('load-favorite');
+        }
 
         return {
             productDetailLink,
-            deleteFavorite
+            deleteFavorite,
+            toggleCart
         }
     }
 }
